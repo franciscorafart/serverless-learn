@@ -37,6 +37,18 @@ functions:
   function1: aws-node-project-dev-hello (1.5 kB)
 ```
 
+#### Deploy individual function
+To avoid re-building the whole cloud formation stack just run theploy in an individual function:
+
+`sls deploy function -f my-function`
+
+### Logs
+Log all deployed functions locally (faster than Cloud Watch and free)
+`sls dev --verbose`
+
+#### Log specific function
+`sls dev -f my-function`
+
 ### Invocation
 
 After successful deployment, you can invoke the deployed function by using the following command:
@@ -70,3 +82,6 @@ Which should result in response similar to the following:
     "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
 }
 ```
+
+#### Passing a body to a local call
+`serverless invoke local -f functionName --data '{"a":"bar"}'`
